@@ -3,7 +3,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Heart, Flower } from "lucide-react";
 
-const Letter = () => {
+const Letter = ({ onBurst }: { onBurst?: () => void }) => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, amount: 0.3 });
 
@@ -20,10 +20,10 @@ const Letter = () => {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 1.2, ease: "easeOut" }}
+                className="glass-card"
                 style={{
                     maxWidth: '800px',
                     width: '100%',
-                    backgroundColor: '#fff',
                     padding: '4rem 3rem',
                     borderRadius: '32px',
                     boxShadow: '0 40px 100px rgba(244, 196, 48, 0.1)',
@@ -48,21 +48,42 @@ const Letter = () => {
                 }}>
                     <Flower size={32} />
                 </div>
-                <h2 style={{ fontSize: '2.5rem', marginBottom: '2rem', color: 'var(--foreground)' }}>Para mi Amor</h2>
-                <p style={{
-                    fontSize: '1.25rem',
-                    lineHeight: '1.8',
-                    color: '#555',
-                    fontFamily: 'var(--font-serif)',
-                    fontStyle: 'italic',
-                    marginBottom: '2rem',
-                }}>
-                    Hoy te entrego mi sol, mis campos de luz y estas flores que nunca se marchitan. Porque cada pétalo amarillo me recuerda a tu sonrisa, esa que ilumina mis días más grises. Eres mi primavera eterna, y no hay flor en este mundo que brille más que tú.
-                </p>
+                <h2 className="title-reveal" style={{ fontSize: '3rem', marginBottom: '2rem' }}>Para ti</h2>
+                <div style={{ marginBottom: '3rem' }}>
+                    <p style={{
+                        fontSize: '1.4rem',
+                        lineHeight: '1.8',
+                        color: '#2d2a1c',
+                        fontFamily: 'var(--font-serif)',
+                        fontStyle: 'italic',
+                    }}>
+                        "Estas flores y todo lo que hay aquí son para ti. Gracias por ser mi luz cada día."
+                    </p>
+                    <p style={{
+                        fontSize: '1.1rem',
+                        color: 'var(--golden)',
+                        marginTop: '1.5rem',
+                        fontWeight: 600
+                    }}>
+                        🎁 Te doy un cupón especial:
+                    </p>
+                </div>
+
+                <div style={{ marginBottom: '3rem' }}>
+                    <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="btn-premium"
+                        onClick={onBurst}
+                    >
+                        CUPÓN VÁLIDO PARA MORDERTE 🦷🌻
+                    </motion.button>
+                </div>
+
                 <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', alignItems: 'center', color: 'var(--golden)' }}>
-                    <Heart fill="currentColor" />
-                    <span style={{ fontWeight: 600, letterSpacing: '1px' }}>CON TODO MI CORAZÓN</span>
-                    <Heart fill="currentColor" />
+                    <Flower size={20} />
+                    <span style={{ fontWeight: 600, letterSpacing: '2px', fontSize: '0.8rem' }}>UN DETALLE ESPECIAL</span>
+                    <Flower size={20} />
                 </div>
             </motion.div>
         </section>

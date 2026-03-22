@@ -25,21 +25,23 @@ const Hero = () => {
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.5, duration: 0.8 }}
-                    style={{ fontSize: 'clamp(3rem, 10vw, 6rem)', margin: 0, lineHeight: 1.1 }}
+                    className="title-reveal"
+                    style={{ fontSize: 'clamp(3.5rem, 12vw, 7.5rem)', margin: 0, lineHeight: 1.1 }}
                 >
                     Para Ti
                 </motion.h1>
                 <motion.p
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.8, duration: 1 }}
+                    transition={{ delay: 0.1, duration: 1, repeat: Infinity, repeatType: 'reverse' }}
                     style={{
                         fontFamily: 'var(--font-serif)',
                         fontStyle: 'italic',
                         fontSize: 'clamp(1.2rem, 3vw, 2.5rem)',
-                        marginTop: '1rem',
+                        marginTop: '1.5rem',
                         color: 'var(--accent-yellow)',
-                        fontWeight: 300
+                        fontWeight: 300,
+                        textShadow: '0 5px 15px rgba(0,0,0,0.5)'
                     }}
                 >
                     Flores amarillas por siempre.
